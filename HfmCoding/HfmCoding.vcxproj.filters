@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h">
+    <ClInclude Include="HfmTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BinTreeNode.h">
+    <ClInclude Include="PrioQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

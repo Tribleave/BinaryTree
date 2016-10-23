@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7A637323-E5A6-4033-B3BA-194B2B1677CA}</ProjectGuid>
+    <ProjectGuid>{2435C59F-5CE7-4E65-9E9C-0BAF11E5C194}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>BinaryTree</RootNamespace>
+    <RootNamespace>HfmCoding</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,8 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="BinTreeNode.h" />
+    <ClInclude Include="HfmTree.h" />
+    <ClInclude Include="PrioQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
