@@ -281,7 +281,7 @@ template<class T>
 BinTreeNode<T>* BinaryTree<T>::Copy(BinTreeNode<T>* orignode)
 {
 	if (orignode == NULL) return NULL;
-	BinTreeNode<T>* subTree = new BinTreeNode<T>(orignode->data);
+	BinTreeNode<T>* subTree = new BinTreeNode<T>(orignode->weight,orignode->data);
 	subTree->leftChild = Copy(orignode->leftChild);
 	subTree->rightChild = Copy(orignode->rightChild);
 	return subTree;

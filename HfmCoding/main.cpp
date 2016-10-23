@@ -1,12 +1,15 @@
 #include "HfmTree.h"
-#include "PrioQueue.h"
+#include "menu.h"
 #include <iostream>
 using namespace std;
 int main()
 {
-	HfmTree<char> H;
-	H.SetWeight(1);
-	cout << "OK?" << endl;
-	system("PAUSE");
+	int process=1;
+	while (process) {
+		HfmTree<char> HfmT;
+		process=menu(HfmT);
+		system("cls");
+	}
 	return 0;
 }
+

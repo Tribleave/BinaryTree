@@ -143,10 +143,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="HfmTree.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="PrioQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

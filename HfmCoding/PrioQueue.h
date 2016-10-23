@@ -7,7 +7,7 @@ protected:
 	int n, maxSize;
 public:
 	PriorityQueue(int mSize = 50);
-	~PriorityQueue() { delete[]data };
+	~PriorityQueue() { delete[]data; }
 	bool IsEmpty() const { return n == 0; }
 	bool IsFull() const { return n == maxSize; }
 	bool Append(const T &item);
@@ -53,6 +53,7 @@ bool PriorityQueue<T>::Append(const T & item)
 	if (IsFull())	return false;
 	data[n++] = item;
 	AdjustUp(n - 1);
+	return true;
 }
 template<class T>
 bool PriorityQueue<T>::Serve(T & item)
