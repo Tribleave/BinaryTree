@@ -29,11 +29,12 @@ public:
 	void Create(T* ch, int* w,int n);
 	void EnCode();
 	void EnCode(ostream& out);
-	void Code (istream& in, ostream& out)const;
-	void DeCode (istream& in, ostream& out)const;
+	void PrintCode(ostream& out);
+	void Code (istream& in, ostream& out);
+	void DeCode (istream& in, ostream& out);
 	int getWeight() { return root->weight; }
 protected:
-	static int binarySearch(const T x);
+	int binarySearch(const T& x);
 	static bool comp(const HfmCode<T>& a, const HfmCode<T>& b) {
 		return a.ch < b.ch;
 	}
@@ -141,6 +142,13 @@ void HfmTree<T>::EnCode(ostream & out)
 		out << codeArray[index].ch << ' ' << codeArray[index].code << endl;
 }
 template<class T>
+void HfmTree<T>::PrintCode(ostream& out)
+{
+	if (!IsCoded())	return;
+	for (int index = 0; index < leaf; index++)
+		out << codeArray[index].ch << ' ' << codeArray[index].code << endl;
+}
+template<class T>
 void HfmTree<T>::EnCode(BinTreeNode<T>*& subTree, string s)
 {
 	if (subTree->IsLeaf()) {
@@ -149,20 +157,20 @@ void HfmTree<T>::EnCode(BinTreeNode<T>*& subTree, string s)
 		codeNum++;
 		return;
 	}
-	string sl = "0" + s;
+	string sl = s + "0";
 	EnCode(subTree->leftChild, sl);
-	string sr = "1" + s;
+	string sr = s + "1";
 	EnCode(subTree->rightChild, sr);
 }
 template<class T>
-int HfmTree<T>::binarySearch(const T x)
+int HfmTree<T>::binarySearch(const T& x)
 {
 	int head = 0, tail = leaf - 1, mid;
 	while (head <= tail) {
 		mid = head + (tail - head) / 2;
 		if (codeArray[mid].ch == x)
 			return mid;
-		else if (codeArray[mid] < x)
+		else if (codeArray[mid].ch < x)
 			head = mid + 1;
 		else
 			tail = mid - 1;
@@ -170,12 +178,12 @@ int HfmTree<T>::binarySearch(const T x)
 	return -1;
 }
 template<class T>
-void HfmTree<T>::Code(istream& in, ostream & out) const
+void HfmTree<T>::Code(istream& in, ostream & out)
 {
 	if (!IsCoded())	return;
 	T ch;
 	int position;
-	while (!in.eof()) {
+	while (in.peek()!=EOF) {
 		in >> ch;
 		position = binarySearch(ch);
 		if (position == -1)
@@ -184,15 +192,15 @@ void HfmTree<T>::Code(istream& in, ostream & out) const
 	}
 }
 template<class T>
-void HfmTree<T>::DeCode(istream & in, ostream & out) const
+void HfmTree<T>::DeCode(istream & in, ostream & out)
 {
 	if (!IsCoded())	return;
 	BinTreeNode<T>* pt = root;
 	char ch;
-	while (!in.eof()) {
-		while (!pt->IsLeaf() && !in.eof()) {
+	while (in.peek()!=EOF) {
+		while (!pt->IsLeaf() && in.peek()!=EOF) {
 			if (pt == NULL)	return;
-			cin >> ch;
+			in >> ch;
 			if (ch == '0')	pt = pt->leftChild;
 			else if (ch == '1')	pt = pt->rightChild;
 			else return;
